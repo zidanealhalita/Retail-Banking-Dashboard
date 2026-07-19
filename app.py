@@ -33,38 +33,57 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    .main { background-color: #F5F7FA; }
+    /* Force a consistent dark look regardless of the visitor's device/browser theme */
+    html, body, .stApp, .main {
+        background-color: #0E1117 !important;
+        color: #E5E7EB !important;
+    }
+
     div[data-testid="stMetric"] {
-        background-color: #FFFFFF;
-        border: 1px solid #E3E8EF;
+        background-color: #1B2130 !important;
+        border: 1px solid #2A3244;
         border-radius: 10px;
         padding: 15px 15px 10px 15px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.25);
     }
-    div[data-testid="stMetricLabel"] { font-weight: 600; color: #4A5568; }
+    div[data-testid="stMetricLabel"] * { font-weight: 600; color: #9CA3AF !important; }
+    div[data-testid="stMetricValue"] * { color: #F9FAFB !important; }
+
     .insight-box {
-        background-color: #EEF4FF;
-        border-left: 5px solid #2563EB;
+        background-color: #16233B;
+        border-left: 5px solid #3B82F6;
         padding: 12px 18px;
         border-radius: 6px;
         margin-bottom: 10px;
         font-size: 0.95rem;
+        color: #E5E7EB;
     }
     .section-title {
         font-size: 1.3rem;
         font-weight: 700;
-        color: #1E293B;
+        color: #F3F4F6;
         margin-top: 10px;
     }
+
+    section[data-testid="stSidebar"] {
+        background-color: #12151C !important;
+    }
+
+    button[data-baseweb="tab"] { color: #9CA3AF; }
+    button[data-baseweb="tab"][aria-selected="true"] { color: #3B82F6; }
+
     footer {visibility: hidden;}
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-PRIMARY_COLOR = "#2563EB"
+PRIMARY_COLOR = "#3B82F6"
 SEQ_COLORS = px.colors.sequential.Blues
 CAT_COLORS = px.colors.qualitative.Set2
+PLOTLY_TEMPLATE = "plotly_dark"
+px.defaults.template = PLOTLY_TEMPLATE
+px.defaults.color_discrete_sequence = CAT_COLORS
 
 
 # ==============================================================================
